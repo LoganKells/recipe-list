@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    // View Model
+    @ObservedObject var viewModel = RecipeViewModel()
+    
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(viewModel.recipes!) { recipe in
+            Text(recipe.name)
+            
+        }
     }
 }
 
