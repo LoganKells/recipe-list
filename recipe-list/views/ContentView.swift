@@ -12,8 +12,18 @@ struct ContentView: View {
     @ObservedObject var viewModel = RecipeViewModel()  // Listen to object for published changes
     
     var body: some View {
-        List(viewModel.recipes!) { recipe in
-            Text(recipe.name)
+        List(viewModel.recipes) { recipe in
+            
+            HStack(spacing: 18.0){
+                Image(recipe.image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 55, height: 55, alignment: .center)
+                    .clipped()
+                    .cornerRadius(6)
+                Text(recipe.name)
+            }
+            
             
         }
     }

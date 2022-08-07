@@ -12,7 +12,7 @@ import Foundation
 /// The ViewModel handles the business logic for the application.
 class RecipeViewModel: ObservableObject {
     // Update the View using the [Recipe] data.
-    @Published var recipes: [Recipe]?
+    @Published var recipes: [Recipe]
     
     // The data service contains helper methods for reading
     // data from storage.
