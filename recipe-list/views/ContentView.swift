@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     // View Model
-    @ObservedObject var viewModel = RecipeViewModel()
-    
+    @ObservedObject var viewModel = RecipeViewModel()  // Listen to object for published changes
     
     var body: some View {
         List(viewModel.recipes!) { recipe in

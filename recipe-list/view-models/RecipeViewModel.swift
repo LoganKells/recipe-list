@@ -7,81 +7,24 @@
 
 import Foundation
 
-enum FileError: Error {
-    // See https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html
-    case invalidSelection(fileName: String, fileType: String)
-    case readError(url: URL)
-    case decodeError(url: URL)
-}
 
+
+/// The ViewModel handles the business logic for the application.
 class RecipeViewModel: ObservableObject {
     // Update the View using the [Recipe] data.
     @Published var recipes: [Recipe]?
     
-    private func getFileUrl(fileName: String, fileType: String, directory: String = "resources") throws -> URL {
-        // Import data from the ./resources/recipes.json file
-
-        let url: URL?
-        
-        if let filePath: String = Bundle.main.path(forResource: fileName, ofType: fileType) {
-            url = URL(fileURLWithPath: filePath)
-        } else {
-            url = nil
-            throw FileError.invalidSelection(fileName: fileName, fileType: fileType)
-        }
-        return url!
-    }
+    // The data service contains helper methods for reading
+    // data from storage.
+    let dataService: DataService = DataService()
     
-    private func decodeJson(url: URL) throws -> [Recipe]? {
-        let decoder: JSONDecoder = JSONDecoder()
-        let recipeByteData: Data?
-        let recipeData: [Recipe]?
-        do {
-            recipeByteData = try Data(contentsOf: url)
-        } catch {
-            recipeByteData = nil
-            throw FileError.readError(url: url)
-        }
-        
-        // Decode the byte data into a [Recipe] array.
-        do {
-            recipeData = try decoder.decode([Recipe].self, from: recipeByteData!)
-        } catch {
-            recipeData = nil
-            throw FileError.decodeError(url: url)
-        }
-        return recipeData
-    }
-    
+    /// The main purpose of the init in the ViewModel is to load data from storage to
+    /// the @Published var recipes variable.
     init() {
-        // Get a URL to the json file
         let fileName: String = "recipes"
         let fileType: String = "json"
-        let fileUrl: URL?
-        let data: Data?
-        let recipeData: [Recipe]?
-        let decoder: JSONDecoder = JSONDecoder()
         
-        // Get a URL to the json file
-        do {
-            fileUrl = try getFileUrl(fileName: fileName, fileType: fileType)
-        } catch {
-            fileUrl = nil
-            print("Error, file \"\(fileName).\(fileType)\" not found.\n\(error)")
-        }
-        
-        // Decode the data from the json
-        do {
-            recipeData = try decodeJson(url: fileUrl!)
-        } catch {
-            recipeData = nil
-            print("Error decoding file.\n\(error)")
-        }
-        
-        for recipe in recipeData! {
-            recipe.id = UUID()
-        }
-        
-        self.recipes = recipeData
+        // Create a [Recipe] array by reading data from json storage.
+        self.recipes = DataService().readData(fileName: fileName, fileType: fileType)
     }
 }
