@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0631173928A02F7A009194BD /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631173828A02F7A009194BD /* DataService.swift */; };
+		0631173B28A1C2DD009194BD /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631173A28A1C2DD009194BD /* RecipeDetailView.swift */; };
 		06F4FEE82898886000AFC6B0 /* recipe_listApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F4FEE72898886000AFC6B0 /* recipe_listApp.swift */; };
 		06F4FEEA2898886000AFC6B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F4FEE92898886000AFC6B0 /* ContentView.swift */; };
 		06F4FEEC2898886000AFC6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F4FEEB2898886000AFC6B0 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		0631173828A02F7A009194BD /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		0631173A28A1C2DD009194BD /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		06F4FEE42898886000AFC6B0 /* recipe-list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "recipe-list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F4FEE72898886000AFC6B0 /* recipe_listApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipe_listApp.swift; sourceTree = "<group>"; };
 		06F4FEE92898886000AFC6B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				06F4FEE92898886000AFC6B0 /* ContentView.swift */,
+				0631173A28A1C2DD009194BD /* RecipeDetailView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06F4FEFD28988F5400AFC6B0 /* Recipe.swift in Sources */,
+				0631173B28A1C2DD009194BD /* RecipeDetailView.swift in Sources */,
 				06F4FEFF289890A300AFC6B0 /* RecipeViewModel.swift in Sources */,
 				06F4FEEA2898886000AFC6B0 /* ContentView.swift in Sources */,
 				06F4FEE82898886000AFC6B0 /* recipe_listApp.swift in Sources */,
